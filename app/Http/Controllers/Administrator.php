@@ -21,7 +21,6 @@ class Administrator extends Controller
     public function show()
     {
         $blogs = DB::table('post')->join('user', 'user.id', '=', 'post.user_id')->get();
-        var_dump($blogs);
         return view('administrator', ['title' => 'Administrator', 'name' => 'This is the administrators site','blogs'=>$blogs]);
     }
 
