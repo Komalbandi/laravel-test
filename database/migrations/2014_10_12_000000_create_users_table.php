@@ -13,13 +13,27 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('user', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('password');
             $table->rememberToken();
-            $table->timestamps();
+            $table->date('created_at');
+            $table->date('updated_at');
+            $table->date('deleted_at');
+        });
+
+        Schema::create('post', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('user_id')->reference('id')->on('user');
+            $table->boolean('active');
+            $table->string('title');
+            $table->string('body');
+            $table->date('published_at');
+            $table->date('created_at');
+            $table->date('updated_at');
+            $table->date('deleted_at');
         });
     }
 
@@ -31,5 +45,6 @@ class CreateUsersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('users');
+        Schema::dropIfExists('post');
     }
 }

@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/test', function () {
+    return view('greeting', ['name' => 'James']);
+});
+
+Route::get('/administrator', 'Administrator@show');
