@@ -20,8 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->date('created_at');
-            $table->date('updated_at');
-            $table->date('deleted_at');
+            $table->date('updated_at')->nullable();
+            $table->date('deleted_at')->nullable();
         });
 
         Schema::create('post', function (Blueprint $table) {
@@ -31,9 +31,9 @@ class CreateUsersTable extends Migration
             $table->string('title');
             $table->string('body');
             $table->date('published_at');
-            $table->date('created_at');
-            $table->date('updated_at');
-            $table->date('deleted_at');
+            $table->date('created_at')->nullable();
+            $table->date('updated_at')->nullable();
+            $table->date('deleted_at')->nullable();
         });
     }
 

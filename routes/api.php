@@ -18,3 +18,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/administrator', 'Administrator@show')->middleware('cors');
+
+Route::post('/admininstrator-new-blog','Administrator@newBlog')->middleware('cors');
+
+Route::post('/administrator-get-blog','Administrator@getBlog')->middleware('cors');
+
+Route::put('/administrator-update-blog','Administrator@updateBlog')->middleware('cors');
